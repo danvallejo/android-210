@@ -7,6 +7,38 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:text="Native Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDialog"/>
+
+        <Button
+            android:text="Alert Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onAlertDialog"/>
+
+        <Button
+            android:id="@+id/uxPopupWindow"
+            android:text="Popup Window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onPopupWindow"/>
+
+        <Button
+            android:id="@+id/uxThirdActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third Activity"
+            android:onClick="onThirdActivity"/>
+
+        <Spinner
+            android:id="@+id/uxPhoneTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
         <ToggleButton
             android:id="@+id/uxToggleButton"
             android:layout_width="wrap_content"

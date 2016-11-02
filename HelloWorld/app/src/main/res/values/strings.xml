@@ -10,4 +10,19 @@
         <item>Anguilla</item>
         <item>Antarctica</item>
     </string-array>
+
+    <string-array name="phonetype_array">
+        <item>Home2</item>
+        <item>Mobile</item>
+        <item>Fax</item>
+    </string-array>
+
+    <string-array name="cities_array">
+        <item>Seattle</item>
+        <item>Portland</item>
+        <item>Los Angeles</item>
+        <item>New York</item>
+        <item>Chicago</item>
+        <item>Dallas</item>
+    </string-array>
 </resources>
