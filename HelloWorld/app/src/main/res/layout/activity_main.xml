@@ -1,158 +1,42 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <Button
-            android:text="Native Dialog"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:background="#FF1010"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button android:id="@+id/goto_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onDialog"/>
+            android:text="First" />
 
-        <Button
-            android:text="Alert Dialog"
+        <Button android:id="@+id/goto_last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onAlertDialog"/>
-
-        <Button
-            android:id="@+id/uxPopupWindow"
-            android:text="Popup Window"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onPopupWindow"/>
-
-        <Button
-            android:id="@+id/uxThirdActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Third Activity"
-            android:onClick="onThirdActivity"/>
-
-        <Spinner
-            android:id="@+id/uxPhoneTypeSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-        <ToggleButton
-            android:id="@+id/uxToggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="This is On"
-            android:textOff="This is Off"
-            android:checked="true" />
-
-        <CheckBox android:id="@+id/uxCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This is a checkbox"
-            android:onClick="onCheckboxClicked"/>
-
-        <AutoCompleteTextView
-            android:id="@+id/uxAutocompleteCountry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:onClick="sendMessage"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm"
-            android:drawableLeft="@drawable/icon"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:onClick="sendMessage"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm"
-            android:drawableLeft="@drawable/icon"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:onClick="sendMessage"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm"
-            android:drawableLeft="@drawable/icon"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:onClick="sendMessage"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm"
-            android:drawableLeft="@drawable/icon"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon"
-            android:onClick="sendMessage"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm"
-            android:drawableLeft="@drawable/icon"
-            />
+            android:text="Last" />
 
     </LinearLayout>
-</ScrollView>
+
+
+</LinearLayout>
