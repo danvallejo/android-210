@@ -13,6 +13,36 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSharedIncrement"
+        android:text="Increment SharedSettings"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSharedRead"
+        android:text="Read SharedSettings"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="UpdateFile"
+        android:text="Update File" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ReadFile"
+        android:text="Read File" />
+
+    <TextView
+        android:id="@+id/uxTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:background="#FF1010"
