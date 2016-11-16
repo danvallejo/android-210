@@ -1,5 +1,7 @@
 package com.cstructor.helloworld;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -20,6 +22,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     static final int NUM_ITEMS = 10;
@@ -56,6 +63,67 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
+    }
+
+    String FILENAME = "hello_file";
+
+    int value = 16;
+
+    public static final String PREFS_NAME = "MyPrefsFile";
+
+    public void onSharedIncrement(View view) {
+        // We need an Editor object to make preference changes.
+        // All objects are from android.context.Context
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("sharedValue", ++value);
+
+        // Commit the edits!
+        editor.commit();
+    }
+
+    public void onSharedRead(View view) {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        value = settings.getInt("sharedValue", -1);
+
+        Toast.makeText(this, Integer.toString(value), Toast.LENGTH_LONG).show();
+    }
+
+    public void UpdateFile(View view) {
+        String string = "hello world! " + (value++) + "!";
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_APPEND);
+            fos.write(string.getBytes());
+            fos.close();
+            Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void ReadFile(View view) {
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(getFilesDir() + "/" + FILENAME));
+            String line;
+            String text = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                text += line;
+            }
+            TextView tv = (TextView) findViewById(R.id.uxTextView);
+            tv.setText(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override
