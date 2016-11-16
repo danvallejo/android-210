@@ -1,6 +1,7 @@
 package com.cstructor.helloworld;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -64,6 +65,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 
     }
+
+    public void onSettings(View view){
+        Intent intent = new Intent(this, SettingsActivity.class);
+
+        startActivity(intent);
+    }
+
 
     String FILENAME = "hello_file";
 
