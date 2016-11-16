@@ -28,6 +28,7 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     static final int NUM_ITEMS = 10;
@@ -64,6 +65,20 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
+        DbHelper db = DbHelper.getInstance(this);
+
+        db.addSession("steve", new Date());
+
+        DBSession[] sessions = db.getSessions();
+
+        DBSession session = sessions[0];
+        db.updateSession(session.SessionId, session.Name + "-updated", session.StartDate);
+
+        sessions = db.getSessions();
+
+        db.deleteSession(session.SessionId);
+
+        sessions = db.getSessions();
     }
 
     public void onSettings(View view){
@@ -82,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onSharedIncrement(View view) {
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences("com.cstructor.helloworld_preferences", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("sharedValue", ++value);
 
