@@ -3,6 +3,8 @@ package com.cstructor.helloworld;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -79,6 +81,33 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         db.deleteSession(session.SessionId);
 
         sessions = db.getSessions();
+    }
+
+    public void onContactClick(View view) {
+        // Sets the columns to retrieve for the user profile
+        String[] projection = new String[]
+                {
+                        ContactsContract.Contacts._ID,
+                        ContactsContract.Contacts.DISPLAY_NAME
+                };
+
+        // Retrieves the profile from the Contacts Provider
+        Cursor cursor = getContentResolver().query(
+                ContactsContract.Contacts.CONTENT_URI,
+                projection,
+                null,
+                null,
+                ContactsContract.Contacts.DISPLAY_NAME + " ASC");
+
+        if (cursor.moveToFirst()) {
+            while (true) {
+                String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                Log.d("cursor", name);
+                if (!cursor.moveToNext()) {
+                    break;
+                }
+            }
+        }
     }
 
     public void onSettings(View view){
