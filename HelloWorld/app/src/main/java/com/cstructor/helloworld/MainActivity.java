@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -81,6 +82,22 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         db.deleteSession(session.SessionId);
 
         sessions = db.getSessions();
+    }
+
+    public void onUpdateTextView(View view) {
+        final TextView textView = (TextView) findViewById(R.id.uxTextView2);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int x = 0; x < 10; x++) {
+                    SystemClock.sleep(1000);
+                    Log.d("main", Integer.toString(x));
+                    textView.setText(Integer.toString(x));
+                }
+            }
+        }).start();
+
     }
 
     public void onContactClick(View view) {
