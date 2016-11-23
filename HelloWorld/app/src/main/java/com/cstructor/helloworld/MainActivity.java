@@ -88,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onUpdateTextView(View view) {
         final TextView textView = (TextView) findViewById(R.id.uxTextView2);
 
+        CountdownTask countdownTask = new CountdownTask(textView);
+
+        countdownTask.execute(100);
+
+       /* final TextView textView = (TextView) findViewById(R.id.uxTextView2);
+
         final Handler handler = new Handler();
 
         new Thread(new Runnable() {
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     });
                 }
             }
-        }).start();
+        }).start();*/
     }
 
     public void onContactClick(View view) {
