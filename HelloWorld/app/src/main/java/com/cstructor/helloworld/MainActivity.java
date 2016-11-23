@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -87,17 +88,26 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onUpdateTextView(View view) {
         final TextView textView = (TextView) findViewById(R.id.uxTextView2);
 
+        final Handler handler = new Handler();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int x = 0; x < 10; x++) {
+                    final int newX = x;
+
                     SystemClock.sleep(1000);
                     Log.d("main", Integer.toString(x));
-                    textView.setText(Integer.toString(x));
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView.setText(Integer.toString(newX));
+                        }
+                    });
                 }
             }
         }).start();
-
     }
 
     public void onContactClick(View view) {
