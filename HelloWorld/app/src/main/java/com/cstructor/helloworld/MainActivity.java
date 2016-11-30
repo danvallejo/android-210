@@ -86,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         sessions = db.getSessions();
     }
 
+    public void onServiceClick(View view){
+        long id = Thread.currentThread().getId();
+        Log.d("UIThreadID=", Long.toString(id));
+
+        startService(new Intent(this, MyService.class));
+    }
+
     public void onUIThreadHandler(View view){
         final TextView textView = (TextView) findViewById(R.id.uxTextView2);
         final UIThreadHandler uiThreadHandler = new UIThreadHandler(textView);
