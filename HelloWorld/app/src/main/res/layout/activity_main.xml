@@ -16,6 +16,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="UIThreadHandler"
+        android:onClick="onUIThreadHandler"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="UpdateTextView"
         android:onClick="onUpdateTextView"/>
 

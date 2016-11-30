@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -83,6 +84,41 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         db.deleteSession(session.SessionId);
 
         sessions = db.getSessions();
+    }
+
+    public void onUIThreadHandler(View view){
+        final TextView textView = (TextView) findViewById(R.id.uxTextView2);
+        final UIThreadHandler uiThreadHandler = new UIThreadHandler(textView);
+
+        Runnable runnable = new Runnable(){
+            @Override
+            public void run() {
+                for (int x = 0; x < 100; x++) {
+
+                    final int y = x;
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    Log.d("main", Integer.toString(y));
+
+                    if (x % 2 == 0){
+                        Message message = new Message();
+
+                        message.arg1 = x;
+                        message.what = UIThreadHandler.MSG_PROCESS;
+
+                        //uiThreadHandler.sendEmptyMessage(UIThreadHandler.MSG_PROCESS);
+                        uiThreadHandler.sendMessage(message);
+                    }
+                }
+            }
+        };
+
+        new Thread(runnable).start();
     }
 
     public void onUpdateTextView(View view) {
