@@ -87,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     public void onServiceClick(View view){
+
+        MyIntentService.addSong(this, "Jingle Bells");
+
         long id = Thread.currentThread().getId();
         Log.d("UIThreadID=", Long.toString(id));
 
